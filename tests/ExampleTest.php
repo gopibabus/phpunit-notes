@@ -2,7 +2,9 @@
 
 namespace App\Tests;
 
+require 'example-functions.php';
 use App\Cart;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
@@ -11,6 +13,27 @@ class ExampleTest extends TestCase
     {
         $this->assertSame('foo', 'foo');
         $this->assertTrue('foo' === 'foo');
+    }
+
+    #[DataProvider('quotientProvider')]
+    public function testQuotientIsCalculatedCorrectly($a, $b, $expected)
+    {
+        $quotient = quotient($a, $b);
+
+        $this->assertSame($expected, $quotient);
+    }
+
+
+    /**
+     * If you give each array a key name, it makes it easy to identify which scenarios have failed
+     */
+    public static function quotientProvider(): array
+    {
+        return [
+            '9_by_3' => [9, 3, 3],
+            '72_by_9' => [72, 9, 8],
+            'division_by_zero' => [20, 0, 20],
+        ];
     }
 
     public function testSomeAssertions(): void
