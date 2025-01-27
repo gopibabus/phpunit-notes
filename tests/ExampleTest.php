@@ -50,5 +50,8 @@ class ExampleTest extends TestCase
 
         // assertIsArray with custom failure message
         $this->assertTrue(is_array([3, 2, 1]), 'Asserting this [3, 2, 1] is an array');
+
+        // Using constants from bootstrap.php
+        $this->assertEquals('localhost', URL);
     }
 }

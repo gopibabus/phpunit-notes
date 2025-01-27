@@ -5,7 +5,7 @@ services:
     working_dir: /app
     volumes:
       - .:/app
-    command: ["vendor/bin/phpunit", "--testdox", "--colors=always", "tests"]
+    command: ["vendor/bin/phpunit"]
 
   composer:
     image: composer:latest

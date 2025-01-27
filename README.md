@@ -12,3 +12,11 @@ docker container prune -f && docker compose run phpunit
 # Install composer dependencies
 docker container prune -f && docker compose run composer install
 ```
+
+### PHPUnit Commands
+
+```bash
+# Run test suite
+php vendor/bin/phpunit --testsuite=Integration
+
+```

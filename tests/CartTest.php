@@ -59,4 +59,17 @@ class CartTest extends TestCase
         // Make assertions
         $this->assertEquals(12, $netPrice);
     }
+
+    /**
+     * This is the phpunit10 + version of the test
+     */
+    public function testErrorsHappensWhenPriceIsSetAsString(): void
+    {
+        try {
+            $this->cart->setPrice('5.99');
+            $this->fail('Price must be a float');
+        } catch (\Throwable $throwable) {
+            $this->assertStringContainsString('must be a float', $throwable->getMessage());
+        }
+    }
 }
