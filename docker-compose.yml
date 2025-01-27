@@ -1,0 +1,32 @@
+services:
+  phpunit:
+    image: php:8.2-cli
+    container_name: php_unit_test_runner
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: ["vendor/bin/phpunit", "--testdox", "--colors=always", "tests"]
+
+  composer:
+    image: composer:latest
+    container_name: composer_installer
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: ["composer", "install"]
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_test_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: test_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
