@@ -48,7 +48,7 @@ class ExampleTest extends TestCase
         // assertGreaterThan (or equal)
         $this->assertGreaterThanOrEqual(21, $value);
 
-        // assertIsArray
-        $this->assertTrue(is_array([3, 2, 1]));
+        // assertIsArray with custom failure message
+        $this->assertTrue(is_array([3, 2, 1]), 'Asserting this [3, 2, 1] is an array');
     }
 }
